@@ -1,11 +1,14 @@
 import React from 'react';
+import PostList from './PostList.js';
+import PostForm from './PostForm.js';
+
 
 var Pearl = React.createClass({
-
 	render() {
 		return(
 			<div>
-				{ 'Hello, world!' }
+				<PostList FirebasePostsRef={ this.props.FirebasePostsRef } />
+				<PostForm FirebasePostsRef={ this.props.FirebasePostsRef } />
 			</div>
 		);
 	}
