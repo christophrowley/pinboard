@@ -3,7 +3,7 @@ import PostList from './PostList.js';
 import PostForm from './PostForm.js';
 
 
-var Pearl = React.createClass({
+var PinBoard = React.createClass({
 	render() {
 		return(
 			<div>
@@ -14,4 +14,4 @@ var Pearl = React.createClass({
 	}
 })
 
-export default Pearl;
+export default PinBoard;
