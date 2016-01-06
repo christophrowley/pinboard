@@ -118,8 +118,65 @@ blockquote:after {
   -ms-align-items: center;
   align-items: center;
 }
+/*
+	Global variables 
+*/
 html,
 body,
-#app-container {
+#app-container,
+#app-container div {
   height: 100%;
+  font-family: 'Inconsolata', 'Courier';
+  overflow-x: hidden;
+}
+#app-container {
+  background-color: #22313f;
+}
+header {
+  height: 4rem;
+  width: 100%;
+  line-height: 4rem;
+  padding: 0 2rem;
+  background-color: #fff;
+  font-size: 1.5rem;
+}
+#posts {
+  height: auto;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -o-justify-content: center;
+  -ms-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -o-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  -webkit-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  -o-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+#posts .post {
+  -webkit-flex: 0 0 20rem;
+  -moz-flex: 0 0 20rem;
+  -o-flex: 0 0 20rem;
+  -ms-flex: 0 0 20rem;
+  flex: 0 0 20rem;
+  padding: 2rem;
+}
+#posts .post p {
+  height: 100%;
+  background-color: #fde3a7;
+  padding: 1rem 1.5rem;
+  font-size: 1.125rem;
+  line-height: 1.5rem;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+  min-height: 7.5rem;
 }
