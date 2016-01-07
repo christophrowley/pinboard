@@ -1,17 +1,13 @@
 import React from 'react';
 
+import PinnedItem from './PinnedItem.js';
+
 
 var PostList = React.createClass({
 	render() {
 		if( this.props.posts ) {
 			var posts = this.props.posts.map( function(val) {
-				return(
-					<li className='post' key={val['.key']} >
-						<p>
-							{ val.post_text }
-						</p>
-					</li>
-				);
+				return( <PinnedItem key={val['.key']} post={val} /> );
 			});
 		}
 

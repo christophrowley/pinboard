@@ -62,7 +62,7 @@
 
 	var _PinBoard2 = _interopRequireDefault(_PinBoard);
 
-	var _firebase = __webpack_require__(164);
+	var _firebase = __webpack_require__(165);
 
 	var _firebase2 = _interopRequireDefault(_firebase);
 
@@ -20059,7 +20059,7 @@
 
 	var _PostList2 = _interopRequireDefault(_PostList);
 
-	var _PostForm = __webpack_require__(163);
+	var _PostForm = __webpack_require__(164);
 
 	var _PostForm2 = _interopRequireDefault(_PostForm);
 
@@ -20134,6 +20134,10 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _PinnedItem = __webpack_require__(163);
+
+	var _PinnedItem2 = _interopRequireDefault(_PinnedItem);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var PostList = _react2.default.createClass({
@@ -20141,15 +20145,7 @@
 		render: function render() {
 			if (this.props.posts) {
 				var posts = this.props.posts.map(function (val) {
-					return _react2.default.createElement(
-						'li',
-						{ className: 'post', key: val['.key'] },
-						_react2.default.createElement(
-							'p',
-							null,
-							val.post_text
-						)
-					);
+					return _react2.default.createElement(_PinnedItem2.default, { key: val['.key'], post: val });
 				});
 			}
 
@@ -20165,6 +20161,39 @@
 
 /***/ },
 /* 163 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var PinnedItem = _react2.default.createClass({
+		displayName: 'PinnedItem',
+		render: function render() {
+			return _react2.default.createElement(
+				'li',
+				{ className: 'post', key: this.props.post['.key'] },
+				_react2.default.createElement(
+					'p',
+					null,
+					this.props.post['post_text']
+				)
+			);
+		}
+	});
+
+	exports.default = PinnedItem;
+
+/***/ },
+/* 164 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20205,7 +20234,7 @@
 						post_text: text
 					});
 				}
-				this.setState({ post_text: '' });
+				this.setState({ post_text: "" });
 			}
 		},
 		render: function render() {
@@ -20222,7 +20251,7 @@
 	exports.default = PostForm;
 
 /***/ },
-/* 164 */
+/* 165 */
 /***/ function(module, exports) {
 
 	/*! @license Firebase v2.3.2

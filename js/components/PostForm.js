@@ -24,7 +24,7 @@ var PostForm = React.createClass({
 					post_text: text
 				})
 			}
-			this.setState({ post_text: '' });
+			this.setState({ post_text: "" });
 		}
 	},
 
