@@ -21,8 +21,9 @@ var PostForm = React.createClass({
 			var text = this.state.post_text.trim();
 			if( text ) {
 				this.props.FirebasePostsRef.push({
-					post_text: text
-				})
+					post_text: text,
+					timestamp: Date.now()
+				});
 			}
 			this.setState({ post_text: "" });
 		}

@@ -171,6 +171,9 @@ header {
   flex: 0 0 20rem;
   padding: 2rem;
 }
+#posts .post span {
+  color: #fff;
+}
 #posts .post p {
   height: 100%;
   background-color: #fde3a7;

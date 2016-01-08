@@ -20182,12 +20182,19 @@
 			this.props.FirebasePostsRef.child(this.props.post['.key']).remove();
 		},
 		render: function render() {
+			var timestamp = new Date(this.props.post.timestamp);
+			var parsed_timestamp = timestamp.getHours() + ':' + timestamp.getMinutes() + ' - ' + timestamp.getDate().toString() + '/' + (timestamp.getMonth().toString() + 1) + '/' + timestamp.getFullYear().toString();
 			return _react2.default.createElement(
 				'li',
 				{ className: 'post' },
 				_react2.default.createElement(
 					'div',
 					null,
+					_react2.default.createElement(
+						'span',
+						null,
+						parsed_timestamp
+					),
 					_react2.default.createElement(
 						'span',
 						{ onClick: this._deletePost },
@@ -20244,7 +20251,8 @@
 				var text = this.state.post_text.trim();
 				if (text) {
 					this.props.FirebasePostsRef.push({
-						post_text: text
+						post_text: text,
+						timestamp: Date.now()
 					});
 				}
 				this.setState({ post_text: "" });
