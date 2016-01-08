@@ -20143,9 +20143,10 @@
 	var PostList = _react2.default.createClass({
 		displayName: 'PostList',
 		render: function render() {
+			var _this = this;
 			if (this.props.posts) {
 				var posts = this.props.posts.map(function (val) {
-					return _react2.default.createElement(_PinnedItem2.default, { key: val['.key'], post: val });
+					return _react2.default.createElement(_PinnedItem2.default, { key: val['.key'], post: val, FirebasePostsRef: _this.props.FirebasePostsRef });
 				});
 			}
 
@@ -20177,10 +20178,22 @@
 
 	var PinnedItem = _react2.default.createClass({
 		displayName: 'PinnedItem',
+		_deletePost: function _deletePost() {
+			this.props.FirebasePostsRef.child(this.props.post['.key']).remove();
+		},
 		render: function render() {
 			return _react2.default.createElement(
 				'li',
-				{ className: 'post', key: this.props.post['.key'] },
+				{ className: 'post' },
+				_react2.default.createElement(
+					'div',
+					null,
+					_react2.default.createElement(
+						'span',
+						{ onClick: this._deletePost },
+						'x'
+					)
+				),
 				_react2.default.createElement(
 					'p',
 					null,
@@ -20241,7 +20254,7 @@
 			return _react2.default.createElement('textarea', {
 				className: 'post-input',
 				name: 'post',
-				value: this.state.submission,
+				value: this.state.post_text,
 				onChange: this._onChange,
 				onKeyDown: this._onKeyDown
 			});

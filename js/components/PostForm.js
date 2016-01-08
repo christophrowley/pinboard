@@ -33,7 +33,7 @@ var PostForm = React.createClass({
 			<textarea 
 				className= "post-input"
 				name = "post"
-				value = {this.state.submission}
+				value = {this.state.post_text}
 				onChange = {this._onChange}
 				onKeyDown = {this._onKeyDown}
 			/>
