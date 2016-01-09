@@ -2,11 +2,15 @@
   "name": "pinboard",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/christophrowley/pinboard.git"
+  },
+  "main": "./public/index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Chris Rowley",
   "license": "ISC",
   "dependencies": {
     "babel-core": "^6.3.26",
