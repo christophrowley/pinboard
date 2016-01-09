@@ -12,7 +12,7 @@ var PinnedItem = React.createClass({
 			<li className="post" >
 				<div className="post-meta">
 					<span>{ parsed_timestamp }</span>
-					<span className="delete" onClick={this._deletePost} >x</span>
+					<span className="delete" onClick={this._deletePost} >X</span>
 				</div>
 				<p>
 					{ this.props.post['post_text'] }

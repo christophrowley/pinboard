@@ -16,7 +16,7 @@ var PostList = React.createClass({
 		return(
 			<ul id='posts' >
 				{ posts ? posts : 'No posts to display' }
-				<NewPost />
+				<NewPost FirebasePostsRef={this.props.FirebasePostsRef} />
 			</ul>
 		);
 	}

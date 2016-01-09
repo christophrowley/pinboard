@@ -20083,8 +20083,7 @@
 				'div',
 				null,
 				_react2.default.createElement(_Header2.default, null),
-				_react2.default.createElement(_PostList2.default, { posts: this.state.post_data, FirebasePostsRef: this.props.FirebasePostsRef }),
-				_react2.default.createElement(_PostForm2.default, { FirebasePostsRef: this.props.FirebasePostsRef })
+				_react2.default.createElement(_PostList2.default, { posts: this.state.post_data, FirebasePostsRef: this.props.FirebasePostsRef })
 			);
 		}
 	});
@@ -20158,7 +20157,7 @@
 				'ul',
 				{ id: 'posts' },
 				posts ? posts : 'No posts to display',
-				_react2.default.createElement(_NewPost2.default, null)
+				_react2.default.createElement(_NewPost2.default, { FirebasePostsRef: this.props.FirebasePostsRef })
 			);
 		}
 	});
@@ -20203,7 +20202,7 @@
 					_react2.default.createElement(
 						'span',
 						{ className: 'delete', onClick: this._deletePost },
-						'x'
+						'X'
 					)
 				),
 				_react2.default.createElement(
@@ -20241,6 +20240,12 @@
 				post_text: ''
 			};
 		},
+		componentDidUpdate: function componentDidUpdate() {
+			if (this.state.active) {
+				console.log('I am supposed to be working');
+				this.refs.textInput.getDOMNode().focus();
+			}
+		},
 		_toggleActivation: function _toggleActivation(event) {
 			if (this.state.active) {
 				this.setState({
@@ -20249,7 +20254,6 @@
 				});
 			} else {
 				this.setState({ active: true });
-				event.target.setFocus();
 			}
 		},
 		_onChange: function _onChange(event, value) {
@@ -20271,13 +20275,18 @@
 		render: function render() {
 			return _react2.default.createElement(
 				'li',
-				{ className: 'new post', onClick: this._toggleActivation },
+				{ className: this.state.active ? 'active new post' : 'new post', onClick: this._toggleActivation },
 				_react2.default.createElement('div', { className: 'post-meta' }),
-				this.state.active ? _react2.default.createElement('textarea', {
-					value: this.state.post_text,
-					onChange: this._onChange,
-					onKeyDown: this._onKeyDown
-				}) : _react2.default.createElement('p', null)
+				_react2.default.createElement(
+					'p',
+					null,
+					this.state.active ? _react2.default.createElement('textarea', {
+						ref: 'textInput',
+						value: this.state.post_text,
+						onChange: this._onChange,
+						onKeyDown: this._onKeyDown
+					}) : ''
+				)
 			);
 		}
 	});

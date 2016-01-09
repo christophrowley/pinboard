@@ -29,6 +29,10 @@ q:before, q:after, blockquote:before, blockquote:after { content: ""; }
 	// 	border-radius: 4px;
 	// }
 
+* {
+	box-sizing: border-box;
+}
+
 html, body, #app-container, #app-container div {
 	height: 100%;
 	font-family: @global-font;
@@ -54,6 +58,8 @@ header {
 	.flex-wrap( wrap );
 
 	.post {
+		.flex-item(0 0 20rem);
+		padding: 2rem;
 
 		.post-meta {
 			height: 1.5rem;
@@ -62,39 +68,57 @@ header {
 				display: inline-block;
 				color: rgba(255,255,255,0.8);
 				padding-bottom: 0.5rem;
+				font-size: 0.875rem;
 
 				&.delete {
+					padding: 0.5rem;
 					cursor: pointer;
 					float: right;
+					background-color: rgba(255,255,255,0.2);
 				}
 			}
 		}
 		
-		.flex-item(0 0 20rem);
-		padding: 2rem;
-
 		p, textarea {
 			height: 100%;
-			width: auto;
+			width: 100%;
 			background-color: @c-light;
-			padding: 1rem 1.5rem;
 			font-size: 1.125rem;
 			line-height: 1.5rem;
-			box-shadow: 0 2px 2px rgba(0,0,0,0.5);
-			min-height: 7.5rem;
+			border: none;
+			outline: none;
+			font-family: inherit;
 		}
 
-		&.new p {
-			cursor: pointer;
-			opacity: 0.2;
-			background-image: url('../images/plus.png');
-			background-size: 4rem;
-			background-repeat: no-repeat;
-			background-position: center;
-			.transition( opacity 200ms );
+		p {
+			min-height: 7.5rem;
+			box-shadow: 0 2px 2px rgba(0,0,0,0.5);
+			padding: 1rem 1.5rem;
+		}
 
-			&:hover {
-				opacity: 0.3;
+		textarea {
+
+		}
+
+		&.new {
+
+			&.active p {
+				background-image: none;
+				opacity: 1 !important;
+			}
+
+			p {
+				cursor: pointer;
+				opacity: 0.2;
+				background-image: url('../images/plus.png');
+				background-size: 4rem;
+				background-repeat: no-repeat;
+				background-position: center;
+				.transition( opacity 200ms );
+
+				&:hover {
+					opacity: 0.3;
+				}
 			}
 		}
 	}

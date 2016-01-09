@@ -9,6 +9,13 @@ var NewPost = React.createClass({
 		};
 	},
 
+	componentDidUpdate() {
+		if( this.state.active ) {
+			console.log( 'I am supposed to be working');
+			this.refs.textInput.getDOMNode().focus();
+		}  
+	},	
+
 	_toggleActivation(event) {
 		if( this.state.active ) {
 			this.setState({
@@ -17,7 +24,6 @@ var NewPost = React.createClass({
 			});
 		} else {
 			this.setState({ active: true });
-			event.target.setFocus();
 		}
 	},
 
@@ -41,16 +47,18 @@ var NewPost = React.createClass({
 
 	render() {
 		return(
-			<li className="new post" onClick={this._toggleActivation} >
+			<li className={ this.state.active ? 'active new post' : 'new post' } onClick={this._toggleActivation} >
 				<div className="post-meta"></div>
+				<p>
 				{ this.state.active ? 
 					<textarea 
+						ref = 'textInput'
 						value = {this.state.post_text}
 						onChange = {this._onChange}
 						onKeyDown = {this._onKeyDown}
-					/> : 
-					<p></p> 
+					/> : ''
 				}
+				</p>
 			</li>
 		)
 	}

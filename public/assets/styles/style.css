@@ -121,6 +121,9 @@ blockquote:after {
 /*
 	Global variables 
 */
+* {
+  box-sizing: border-box;
+}
 html,
 body,
 #app-container,
@@ -178,21 +181,33 @@ header {
   display: inline-block;
   color: rgba(255, 255, 255, 0.8);
   padding-bottom: 0.5rem;
+  font-size: 0.875rem;
 }
 #posts .post .post-meta span.delete {
+  padding: 0.5rem;
   cursor: pointer;
   float: right;
+  background-color: rgba(255, 255, 255, 0.2);
 }
 #posts .post p,
 #posts .post textarea {
   height: 100%;
-  width: auto;
+  width: 100%;
   background-color: #fde3a7;
-  padding: 1rem 1.5rem;
   font-size: 1.125rem;
   line-height: 1.5rem;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+  border: none;
+  outline: none;
+  font-family: inherit;
+}
+#posts .post p {
   min-height: 7.5rem;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+  padding: 1rem 1.5rem;
+}
+#posts .post.new.active p {
+  background-image: none;
+  opacity: 1 !important;
 }
 #posts .post.new p {
   cursor: pointer;
