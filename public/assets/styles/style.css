@@ -171,15 +171,42 @@ header {
   flex: 0 0 20rem;
   padding: 2rem;
 }
-#posts .post span {
-  color: #fff;
+#posts .post .post-meta {
+  height: 1.5rem;
 }
-#posts .post p {
+#posts .post .post-meta span {
+  display: inline-block;
+  color: rgba(255, 255, 255, 0.8);
+  padding-bottom: 0.5rem;
+}
+#posts .post .post-meta span.delete {
+  cursor: pointer;
+  float: right;
+}
+#posts .post p,
+#posts .post textarea {
   height: 100%;
+  width: auto;
   background-color: #fde3a7;
   padding: 1rem 1.5rem;
   font-size: 1.125rem;
   line-height: 1.5rem;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
   min-height: 7.5rem;
+}
+#posts .post.new p {
+  cursor: pointer;
+  opacity: 0.2;
+  background-image: url('../images/plus.png');
+  background-size: 4rem;
+  background-repeat: no-repeat;
+  background-position: center;
+  -webkit-transition: opacity 200ms;
+  -moz-transition: opacity 200ms;
+  -o-transition: opacity 200ms;
+  -ms-transition: opacity 200ms;
+  transition: opacity 200ms;
+}
+#posts .post.new p:hover {
+  opacity: 0.3;
 }

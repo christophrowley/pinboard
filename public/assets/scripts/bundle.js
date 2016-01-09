@@ -62,7 +62,7 @@
 
 	var _PinBoard2 = _interopRequireDefault(_PinBoard);
 
-	var _firebase = __webpack_require__(165);
+	var _firebase = __webpack_require__(166);
 
 	var _firebase2 = _interopRequireDefault(_firebase);
 
@@ -20059,7 +20059,7 @@
 
 	var _PostList2 = _interopRequireDefault(_PostList);
 
-	var _PostForm = __webpack_require__(164);
+	var _PostForm = __webpack_require__(165);
 
 	var _PostForm2 = _interopRequireDefault(_PostForm);
 
@@ -20138,6 +20138,10 @@
 
 	var _PinnedItem2 = _interopRequireDefault(_PinnedItem);
 
+	var _NewPost = __webpack_require__(164);
+
+	var _NewPost2 = _interopRequireDefault(_NewPost);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var PostList = _react2.default.createClass({
@@ -20153,7 +20157,8 @@
 			return _react2.default.createElement(
 				'ul',
 				{ id: 'posts' },
-				posts ? posts : 'No posts to display'
+				posts ? posts : 'No posts to display',
+				_react2.default.createElement(_NewPost2.default, null)
 			);
 		}
 	});
@@ -20189,7 +20194,7 @@
 				{ className: 'post' },
 				_react2.default.createElement(
 					'div',
-					null,
+					{ className: 'post-meta' },
 					_react2.default.createElement(
 						'span',
 						null,
@@ -20197,7 +20202,7 @@
 					),
 					_react2.default.createElement(
 						'span',
-						{ onClick: this._deletePost },
+						{ className: 'delete', onClick: this._deletePost },
 						'x'
 					)
 				),
@@ -20214,6 +20219,73 @@
 
 /***/ },
 /* 164 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var NewPost = _react2.default.createClass({
+		displayName: 'NewPost',
+		getInitialState: function getInitialState() {
+			return {
+				active: false,
+				post_text: ''
+			};
+		},
+		_toggleActivation: function _toggleActivation(event) {
+			if (this.state.active) {
+				this.setState({
+					active: false,
+					post_text: ''
+				});
+			} else {
+				this.setState({ active: true });
+				event.target.setFocus();
+			}
+		},
+		_onChange: function _onChange(event, value) {
+			this.setState({ post_text: event.target.value });
+		},
+		_onKeyDown: function _onKeyDown(event) {
+			if (event.keyCode === 13) {
+				event.preventDefault();
+				var text = this.state.post_text.trim();
+				if (text) {
+					this.props.FirebasePostsRef.push({
+						post_text: text,
+						timestamp: Date.now()
+					});
+				}
+				this.setState({ post_text: "" });
+			}
+		},
+		render: function render() {
+			return _react2.default.createElement(
+				'li',
+				{ className: 'new post', onClick: this._toggleActivation },
+				_react2.default.createElement('div', { className: 'post-meta' }),
+				this.state.active ? _react2.default.createElement('textarea', {
+					value: this.state.post_text,
+					onChange: this._onChange,
+					onKeyDown: this._onKeyDown
+				}) : _react2.default.createElement('p', null)
+			);
+		}
+	});
+
+	exports.default = NewPost;
+
+/***/ },
+/* 165 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20272,7 +20344,7 @@
 	exports.default = PostForm;
 
 /***/ },
-/* 165 */
+/* 166 */
 /***/ function(module, exports) {
 
 	/*! @license Firebase v2.3.2

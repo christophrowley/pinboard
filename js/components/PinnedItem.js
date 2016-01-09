@@ -10,9 +10,9 @@ var PinnedItem = React.createClass({
 		var parsed_timestamp = timestamp.getHours() + ':' + timestamp.getMinutes() + ' - ' + timestamp.getDate().toString() + '/' + (timestamp.getMonth().toString() + 1) + '/' + timestamp.getFullYear().toString();
 		return(
 			<li className="post" >
-				<div>
+				<div className="post-meta">
 					<span>{ parsed_timestamp }</span>
-					<span onClick={this._deletePost} >x</span>
+					<span className="delete" onClick={this._deletePost} >x</span>
 				</div>
 				<p>
 					{ this.props.post['post_text'] }

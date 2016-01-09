@@ -55,21 +55,47 @@ header {
 
 	.post {
 
-		span {
-			color: #fff;
+		.post-meta {
+			height: 1.5rem;
+
+			span {
+				display: inline-block;
+				color: rgba(255,255,255,0.8);
+				padding-bottom: 0.5rem;
+
+				&.delete {
+					cursor: pointer;
+					float: right;
+				}
+			}
 		}
 		
 		.flex-item(0 0 20rem);
 		padding: 2rem;
 
-		p {
+		p, textarea {
 			height: 100%;
+			width: auto;
 			background-color: @c-light;
 			padding: 1rem 1.5rem;
 			font-size: 1.125rem;
 			line-height: 1.5rem;
 			box-shadow: 0 2px 2px rgba(0,0,0,0.5);
 			min-height: 7.5rem;
+		}
+
+		&.new p {
+			cursor: pointer;
+			opacity: 0.2;
+			background-image: url('../images/plus.png');
+			background-size: 4rem;
+			background-repeat: no-repeat;
+			background-position: center;
+			.transition( opacity 200ms );
+
+			&:hover {
+				opacity: 0.3;
+			}
 		}
 	}
 }

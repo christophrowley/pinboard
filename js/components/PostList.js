@@ -1,6 +1,7 @@
 import React from 'react';
 
 import PinnedItem from './PinnedItem.js';
+import NewPost from './NewPost.js';
 
 
 var PostList = React.createClass({
@@ -15,6 +16,7 @@ var PostList = React.createClass({
 		return(
 			<ul id='posts' >
 				{ posts ? posts : 'No posts to display' }
+				<NewPost />
 			</ul>
 		);
 	}
