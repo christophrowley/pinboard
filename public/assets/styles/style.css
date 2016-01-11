@@ -180,14 +180,19 @@ header {
 #posts .post .post-meta span {
   display: inline-block;
   color: rgba(255, 255, 255, 0.8);
-  padding-bottom: 0.5rem;
+  line-height: 1.5rem;
   font-size: 0.875rem;
 }
 #posts .post .post-meta span.delete {
-  padding: 0.5rem;
+  color: #fff;
   cursor: pointer;
+  padding: 0 0.75rem;
+  border-style: solid solid none solid;
+  border-width: 1px;
+  border-color: #fff;
+  border-radius: 0.33rem 0.33rem 0 0;
   float: right;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.3);
 }
 #posts .post p,
 #posts .post textarea {
