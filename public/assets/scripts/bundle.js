@@ -20230,6 +20230,10 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _reactDom = __webpack_require__(158);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
 	var _reactOnclickoutside = __webpack_require__(165);
 
 	var _reactOnclickoutside2 = _interopRequireDefault(_reactOnclickoutside);
@@ -20249,7 +20253,7 @@
 		},
 		componentDidUpdate: function componentDidUpdate() {
 			if (this.state.active) {
-				this.refs.textInput.getDOMNode().focus();
+				_reactDom2.default.findDOMNode(this.refs.textInput).focus();
 			}
 		},
 		handleClickOutside: function handleClickOutside(event) {
@@ -20269,22 +20273,33 @@
 			this.setState({ post_text: event.target.value });
 		},
 		_onKeyDown: function _onKeyDown(event) {
-			if (event.keyCode === 13) {
-				event.preventDefault();
-				var text = this.state.post_text.trim();
-				if (text) {
-					this.props.FirebasePostsRef.push({
-						post_text: text,
-						timestamp: Date.now()
+			switch (event.keyCode) {
+				case 13:
+					// return
+					event.preventDefault();
+					var text = this.state.post_text.trim();
+					if (text) {
+						this.props.FirebasePostsRef.push({
+							post_text: text,
+							timestamp: Date.now()
+						});
+					}
+					this.setState({ post_text: "" });
+					break;
+				case 27:
+					// esc
+					event.preventDefault();
+					this.setState({
+						active: false,
+						post_text: ''
 					});
-				}
-				this.setState({ post_text: "" });
+					break;
 			}
 		},
 		render: function render() {
 			return _react2.default.createElement(
 				'li',
-				{ className: this.state.active ? 'active new post' : 'new post', onClick: this._activate() },
+				{ className: this.state.active ? 'active new post' : 'new post', onClick: this._activate },
 				_react2.default.createElement('div', { className: 'post-meta' }),
 				_react2.default.createElement(
 					'p',

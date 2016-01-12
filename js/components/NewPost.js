@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import onClickOutside from 'react-onclickoutside';
 
 
@@ -14,7 +15,7 @@ var NewPost = React.createClass({
 
 	componentDidUpdate() {
 		if( this.state.active ) {
-			this.refs.textInput.getDOMNode().focus();
+			ReactDOM.findDOMNode( this.refs.textInput ).focus();
 		}  
 	},	
 
@@ -38,22 +39,31 @@ var NewPost = React.createClass({
 	},
 
 	_onKeyDown(event) {
-		if( event.keyCode === 13) {
-			event.preventDefault();
-			var text = this.state.post_text.trim();
-			if( text ) {
-				this.props.FirebasePostsRef.push({
-					post_text: text,
-					timestamp: Date.now()
+		switch( event.keyCode ) {
+			case 13: // return
+				event.preventDefault();
+				var text = this.state.post_text.trim();
+				if( text ) {
+					this.props.FirebasePostsRef.push({
+						post_text: text,
+						timestamp: Date.now()
+					});
+				}
+				this.setState({ post_text: "" });
+				break;
+			case 27: // esc
+				event.preventDefault();
+				this.setState({
+					active: false,
+					post_text: ''
 				});
-			}
-			this.setState({ post_text: "" });
+				break;
 		}
 	},
 
 	render() {
 		return(
-			<li className={ this.state.active ? 'active new post' : 'new post' } onClick={this._activate()} >
+			<li className={ this.state.active ? 'active new post' : 'new post' } onClick={this._activate} >
 				<div className="post-meta"></div>
 				<p>
 				{ this.state.active ? 
