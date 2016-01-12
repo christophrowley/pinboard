@@ -1,7 +1,10 @@
 import React from 'react';
+import onClickOutside from 'react-onclickoutside';
 
 
 var NewPost = React.createClass({
+	mixins: [onClickOutside],
+
 	getInitialState() {
 		return {
 			active: false,
@@ -11,18 +14,21 @@ var NewPost = React.createClass({
 
 	componentDidUpdate() {
 		if( this.state.active ) {
-			console.log( 'I am supposed to be working');
 			this.refs.textInput.getDOMNode().focus();
 		}  
 	},	
 
-	_toggleActivation(event) {
+	handleClickOutside(event) {
 		if( this.state.active ) {
 			this.setState({
 				active: false,
 				post_text: ''
 			});
-		} else {
+		}
+	},
+
+	_activate() {
+		if( !this.state.active ) {
 			this.setState({ active: true });
 		}
 	},
@@ -47,7 +53,7 @@ var NewPost = React.createClass({
 
 	render() {
 		return(
-			<li className={ this.state.active ? 'active new post' : 'new post' } onClick={this._toggleActivation} >
+			<li className={ this.state.active ? 'active new post' : 'new post' } onClick={this._activate()} >
 				<div className="post-meta"></div>
 				<p>
 				{ this.state.active ? 
