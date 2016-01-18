@@ -20082,7 +20082,6 @@
 			return _react2.default.createElement(
 				'div',
 				null,
-				_react2.default.createElement(_Header2.default, null),
 				_react2.default.createElement(_PostList2.default, { posts: this.state.post_data, FirebasePostsRef: this.props.FirebasePostsRef })
 			);
 		}
@@ -20193,22 +20192,22 @@
 				{ className: 'post' },
 				_react2.default.createElement(
 					'div',
-					{ className: 'post-meta' },
+					{ className: 'inner' },
 					_react2.default.createElement(
-						'span',
-						null,
-						parsed_timestamp
+						'div',
+						{ className: 'post-meta' },
+						_react2.default.createElement(
+							'span',
+							null,
+							parsed_timestamp
+						),
+						_react2.default.createElement('span', { className: 'delete', onClick: this._deletePost })
 					),
 					_react2.default.createElement(
-						'span',
-						{ className: 'delete', onClick: this._deletePost },
-						'X'
+						'p',
+						null,
+						this.props.post['post_text']
 					)
-				),
-				_react2.default.createElement(
-					'p',
-					null,
-					this.props.post['post_text']
 				)
 			);
 		}
@@ -20300,16 +20299,19 @@
 			return _react2.default.createElement(
 				'li',
 				{ className: this.state.active ? 'active new post' : 'new post', onClick: this._activate },
-				_react2.default.createElement('div', { className: 'post-meta' }),
 				_react2.default.createElement(
-					'p',
-					null,
-					this.state.active ? _react2.default.createElement('textarea', {
-						ref: 'textInput',
-						value: this.state.post_text,
-						onChange: this._onChange,
-						onKeyDown: this._onKeyDown
-					}) : ''
+					'div',
+					{ className: 'inner' },
+					_react2.default.createElement(
+						'p',
+						null,
+						this.state.active ? _react2.default.createElement('textarea', {
+							ref: 'textInput',
+							value: this.state.post_text,
+							onChange: this._onChange,
+							onKeyDown: this._onKeyDown
+						}) : ''
+					)
 				)
 			);
 		}

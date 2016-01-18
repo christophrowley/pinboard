@@ -64,17 +64,18 @@ var NewPost = React.createClass({
 	render() {
 		return(
 			<li className={ this.state.active ? 'active new post' : 'new post' } onClick={this._activate} >
-				<div className="post-meta"></div>
-				<p>
-				{ this.state.active ? 
-					<textarea 
-						ref = 'textInput'
-						value = {this.state.post_text}
-						onChange = {this._onChange}
-						onKeyDown = {this._onKeyDown}
-					/> : ''
-				}
-				</p>
+				<div className="inner">
+					<p>
+					{ this.state.active ? 
+						<textarea 
+							ref = 'textInput'
+							value = {this.state.post_text}
+							onChange = {this._onChange}
+							onKeyDown = {this._onKeyDown}
+						/> : ''
+					}
+					</p>
+				</div>
 			</li>
 		)
 	}

@@ -22,7 +22,6 @@ var PinBoard = React.createClass({
 	render() {
 		return(
 			<div>
-				<Header />
 				<PostList posts={this.state.post_data} FirebasePostsRef={ this.props.FirebasePostsRef } />
 			</div>
 		);

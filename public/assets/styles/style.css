@@ -135,16 +135,9 @@ body,
 #app-container {
   background-color: #22313f;
 }
-header {
-  height: 4rem;
-  width: 100%;
-  line-height: 4rem;
-  padding: 0 2rem;
-  background-color: #fff;
-  font-size: 1.5rem;
-}
 #posts {
   height: auto;
+  padding: 0.5rem;
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -202,24 +195,30 @@ header {
   }
 }
 #posts .post .post-meta {
-  height: 1.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  margin-bottom: 0.75rem;
 }
 #posts .post .post-meta span {
   display: inline-block;
-  color: rgba(255, 255, 255, 0.8);
-  line-height: 1.5rem;
+  color: #96281B;
   font-size: 0.875rem;
 }
 #posts .post .post-meta span.delete {
-  color: #fff;
   cursor: pointer;
-  padding: 0 0.75rem;
-  border-radius: 0.33rem 0.33rem 0 0;
+  height: 20px;
+  width: 20px;
+  border-radius: 4px;
   float: right;
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(0, 0, 0, 0.05);
+  background-image: url('../images/cross.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 10px;
 }
-#posts .post p,
-#posts .post textarea {
+#posts .post .post-meta span.delete:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+#posts .post .inner {
   height: 100%;
   width: 100%;
   background-color: #fde3a7;
@@ -228,17 +227,25 @@ header {
   border: none;
   outline: none;
   font-family: inherit;
-}
-#posts .post p {
-  min-height: 7.5rem;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+  min-height: 15rem;
   padding: 1rem 1.5rem;
 }
-#posts .post.new.active p {
+#posts .post textarea {
+  font-size: inherit;
+  font-family: inherit;
+  line-height: inherit;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  border: none;
+  background-color: #fde3a7;
+}
+#posts .post.new.active .inner {
   background-image: none;
   opacity: 1 !important;
 }
-#posts .post.new p {
+#posts .post.new .inner {
   cursor: pointer;
   opacity: 0.2;
   background-image: url('../images/plus.png');
@@ -251,6 +258,6 @@ header {
   -ms-transition: opacity 200ms;
   transition: opacity 200ms;
 }
-#posts .post.new p:hover {
+#posts .post.new .inner:hover {
   opacity: 0.3;
 }

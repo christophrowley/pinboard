@@ -10,13 +10,15 @@ var PinnedItem = React.createClass({
 		var parsed_timestamp = timestamp.getHours() + ':' + timestamp.getMinutes() + ' - ' + timestamp.getDate().toString() + '/' + (timestamp.getMonth().toString() + 1) + '/' + timestamp.getFullYear().toString();
 		return(
 			<li className="post" >
-				<div className="post-meta">
-					<span>{ parsed_timestamp }</span>
-					<span className="delete" onClick={this._deletePost} >X</span>
+				<div className="inner">
+					<div className="post-meta">
+							<span>{ parsed_timestamp }</span>
+							<span className="delete" onClick={this._deletePost} ></span>
+						</div>
+					<p>
+						{ this.props.post['post_text'] }
+					</p>
 				</div>
-				<p>
-					{ this.props.post['post_text'] }
-				</p>
 			</li>
 		);
 	}
