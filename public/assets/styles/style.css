@@ -167,12 +167,39 @@ header {
   flex-wrap: wrap;
 }
 #posts .post {
-  -webkit-flex: 0 0 20rem;
-  -moz-flex: 0 0 20rem;
-  -o-flex: 0 0 20rem;
-  -ms-flex: 0 0 20rem;
-  flex: 0 0 20rem;
-  padding: 2rem;
+  -webkit-flex: 0 0 25%;
+  -moz-flex: 0 0 25%;
+  -o-flex: 0 0 25%;
+  -ms-flex: 0 0 25%;
+  flex: 0 0 25%;
+  padding: 0.5rem;
+}
+@media only screen and (max-width: 1200px) {
+  #posts .post {
+    -webkit-flex: 0 0 33%;
+    -moz-flex: 0 0 33%;
+    -o-flex: 0 0 33%;
+    -ms-flex: 0 0 33%;
+    flex: 0 0 33%;
+  }
+}
+@media only screen and (max-width: 900px) {
+  #posts .post {
+    -webkit-flex: 0 0 50%;
+    -moz-flex: 0 0 50%;
+    -o-flex: 0 0 50%;
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+  }
+}
+@media only screen and (max-width: 600px) {
+  #posts .post {
+    -webkit-flex: 0 0 100%;
+    -moz-flex: 0 0 100%;
+    -o-flex: 0 0 100%;
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+  }
 }
 #posts .post .post-meta {
   height: 1.5rem;
