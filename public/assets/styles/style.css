@@ -231,15 +231,16 @@ body,
   min-height: 15rem;
   padding: 1rem 1.5rem;
 }
-#posts .post textarea {
+#posts .post .inner textarea {
   font-size: inherit;
   font-family: inherit;
   line-height: inherit;
   width: 100%;
-  height: 100%;
+  height: 200px;
   outline: none;
   border: none;
   background-color: #fde3a7;
+  resize: none;
 }
 #posts .post.new.active .inner {
   background-image: none;
