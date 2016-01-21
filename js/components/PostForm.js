@@ -16,10 +16,10 @@ var PostForm = React.createClass({
 	},
 
 	_onKeyDown(event) {
-		if( event.keyCode === 13) {
+		if ( event.keyCode === 13) {
 			event.preventDefault();
 			var text = this.state.post_text.trim();
-			if( text ) {
+			if ( text ) {
 				this.props.FirebasePostsRef.push({
 					post_text: text,
 					timestamp: Date.now()
@@ -30,10 +30,10 @@ var PostForm = React.createClass({
 	},
 
 	render() {
-		return(
+		return (
 			<textarea 
-				className= "post-input"
-				name = "post"
+				className = 'post-input'
+				name = 'post'
 				value = {this.state.post_text}
 				onChange = {this._onChange}
 				onKeyDown = {this._onKeyDown}

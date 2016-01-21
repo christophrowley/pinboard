@@ -10,7 +10,7 @@ var PinBoard = React.createClass({
 	mixins: [ReactFireMixin],
 
 	getInitialState() {
-		return{
+		return {
 			post_data: []
 		}
 	},
@@ -20,9 +20,9 @@ var PinBoard = React.createClass({
 	},
 
 	render() {
-		return(
+		return (
 			<div>
-				<PostList posts={this.state.post_data} FirebasePostsRef={ this.props.FirebasePostsRef } />
+				<PostList posts = {this.state.post_data} FirebasePostsRef = { this.props.FirebasePostsRef } />
 			</div>
 		);
 	}

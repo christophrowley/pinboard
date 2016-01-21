@@ -14,13 +14,13 @@ var NewPost = React.createClass({
 	},
 
 	componentDidUpdate() {
-		if( this.state.active ) {
+		if ( this.state.active ) {
 			ReactDOM.findDOMNode( this.refs.textInput ).focus();
 		}  
 	},	
 
-	handleClickOutside(event) {
-		if( this.state.active ) {
+	handleClickOutside( event ) {
+		if ( this.state.active ) {
 			this.setState({
 				active: false,
 				post_text: ''
@@ -29,21 +29,21 @@ var NewPost = React.createClass({
 	},
 
 	_activate() {
-		if( !this.state.active ) {
+		if ( !this.state.active ) {
 			this.setState({ active: true });
 		}
 	},
 
-	_onChange(event, value) {
+	_onChange( event, value ) {
 		this.setState({ post_text: event.target.value });
 	},
 
-	_onKeyDown(event) {
-		switch( event.keyCode ) {
-			case 13: // return
+	_onKeyDown( event ) {
+		switch ( event.keyCode ) {
+			case 13: // Return key
 				event.preventDefault();
 				var text = this.state.post_text.trim();
-				if( text ) {
+				if ( text ) {
 					this.props.FirebasePostsRef.push({
 						post_text: text,
 						timestamp: Date.now()
@@ -51,7 +51,7 @@ var NewPost = React.createClass({
 				}
 				this.setState({ post_text: "" });
 				break;
-			case 27: // esc
+			case 27: // Esc key
 				event.preventDefault();
 				this.setState({
 					active: false,
@@ -62,9 +62,9 @@ var NewPost = React.createClass({
 	},
 
 	render() {
-		return(
-			<li className={ this.state.active ? 'active new post' : 'new post' } onClick={this._activate} >
-				<div className="inner">
+		return (
+			<li className = { this.state.active ? 'active new post' : 'new post' } onClick = {this._activate} >
+				<div className = 'inner' >
 					<p>
 					{ this.state.active ? 
 						<textarea 
